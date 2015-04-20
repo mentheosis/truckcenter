@@ -5,8 +5,7 @@
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
-	chalk = require('chalk'),
-	scrimController = require('./app/controllers/scrims.server.controller');
+	chalk = require('chalk');
 
 /**
  * Main application entry file.
@@ -29,9 +28,6 @@ require('./config/passport')();
 
 // Start the app by listening on <port>
 var server = app.listen(config.port);
-
-var socket = require('socket.io').listen(server);
-scrimController.setSocket(socket);
 
 // Expose app
 exports = module.exports = app;
