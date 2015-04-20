@@ -1,0 +1,29 @@
+'use strict';
+
+module.exports = {
+	//db: 'mongodb://192.168.1.4/ekleague',
+	db: 'localhost/truckcenter',
+	port: process.env.PORT || 3000,
+	log: {
+		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
+		format: 'dev',
+		// Stream defaults to process.stdout
+		// Uncomment to enable logging to a log on the file system
+		options: {
+			//stream: 'access.log'
+		}
+	},
+	app: {
+		title: 'Truck Center - Under Construction'
+	},
+	mailer: {
+		from: process.env.MAILER_FROM || 'noreply@stdio.io' || 'MAILER_FROM',
+		options: {
+			service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail' || 'MAILER_SERVICE_PROVIDER',
+			auth: {
+				user: process.env.MAILER_EMAIL_ID || 'MAILER_EMAIL_ID',
+				pass: process.env.MAILER_PASSWORD || 'MAILER_PASSWORD'
+			}
+		}
+	}
+};

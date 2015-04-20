@@ -1,0 +1,43 @@
+<section class="about-bg" ng-controller="HomeController" ng-init="getAboutItems()">
+
+<div class="about-text-block">
+
+	<div ng-repeat="item in aboutItems">
+		<div ng-show="!editingItem || !adminMode">
+			<span class="about-text-header">
+				{{item.name}}
+			</span>
+	    <a href ng-show="adminMode" class="about-button glyphicon glyphicon-pencil" ng-click="editingItem = !editingItem">edit</a>
+	    <a href ng-show="adminMode" class="about-button glyphicon glyphicon-remove" ng-click="deleteSetting(item)">delete</a>
+			<div class="about-text">
+				{{item.value[0]}}
+			</div>
+		</div>
+		<div ng-show="adminMode && editingItem">
+			<input class="about-input" placeholder="title" ng-model="item.name">
+			<textarea class="about-input" placeholder="text" ng-model="item.value[0]"></textarea>
+	    <a href class="about-button glyphicon glyphicon-check" ng-click="updateSettingWrap(item, this)">save</a>
+		</div>
+
+		<br><br><br>
+	</div>
+
+	<div ng-show="adminMode">
+		<input class="about-input" placeholder="title" ng-model="newName">
+		<textarea class="about-input" placeholder="text" ng-model="newValue"></textarea>
+    <a href class="about-button glyphicon glyphicon-check" ng-click="saveNewSetting()">new</a>
+		{{resText}}
+		<br><br><br>
+	</div>
+
+	<span class="about-text-header">
+		CURRENT GAME
+	</span>
+	<br>
+	<div class="about-text">
+		<img style="width:235px; height:303px; z-index:5" src="/modules/core/img/gameofchoice.png"></img>
+	</div>
+
+</div>
+
+</section>

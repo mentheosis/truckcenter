@@ -1,0 +1,46 @@
+<section class="header" data-ng-controller="HeaderController" ng-init="getBanner()">
+
+<container>
+	<row>
+		<div class="col-xs-12 flexbox-vertical">
+
+		<div class="banner flexbox">
+			<div class="banner-text">
+					<h1>TRUCK CENTER</h1>
+					<h4>Randolph, MA - 781 986 4001</h3>
+			</div>
+			<img class="logo" src="/modules/core/img/logo.png">
+		</div>
+
+		<div class="nav">
+			<ul class="nav nav-pills">
+			  <li ui-route="/" ng-class="{active: $uiRoute}"><a href="/#!/">Home</a></li>
+				<li ng-hide="authentication.user" ui-route="/signup" ng-class="{active: $uiRoute}"><a href="/#!/signup">Sign Up</a></li>
+		  	<li ng-hide="authentication.user" ui-route="/signin" ng-class="{active: $uiRoute}"><a href="/#!/signin">Sign In</a></li>
+
+				<li ng-show="authentication.user">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							{{authentication.user.username}}
+						</a>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li>
+								<a href="/#!/settings/profile">Edit Profile</a>
+							</li>
+							<li ng-show="authentication.user.provider === 'local'">
+								<a href="/#!/settings/password">Change Password</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="/auth/signout">Signout</a>
+							</li>
+						</ul>
+					</li>
+				</li>
+
+			</ul>
+		</div>
+
+		</div>
+	</row>
+</container>
