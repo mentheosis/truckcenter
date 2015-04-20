@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'eKombat',
-		description: 'eKombat',
-		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
+		title: 'Truck Center',
+		description: 'Truck Center',
+		keywords: 'truck, repair, maintenance, 24 hours, service'
 	},
 	//port: process.env.PORT || 80,
 	templateEngine: 'swig',
