@@ -115,13 +115,12 @@ a:hover, a:visited, a:link, a:active {
   font-size: 0.8em;
 	padding: 1px 3px 1px 3px;
 	margin: 2px;
-	color: #FF7000;
 }
 
 .msg-button:hover {
-	color: black;
-	background: #FF7000;
-  border-color: #FF7000;
+	color: white;
+	background: blue;
+  border-color: blue;
 }
 
 .msg-avatar-container {
@@ -168,7 +167,6 @@ a:hover, a:visited, a:link, a:active {
 	position: absolute;
   bottom: -20px;
   left: -5px;
-	color: #FF7000;
 	text-align: center;
 	font-size: 0.75em;
 	word-wrap: break-word;
@@ -234,7 +232,6 @@ textarea.post-full {
 .post {
   display: inline-block;
   vertical-align: top;
-  color: #FF6600;
   width: 100%;
 }
 

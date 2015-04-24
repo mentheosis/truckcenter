@@ -35,12 +35,6 @@
 
 	<div data-ng-repeat="article in articles" class="news-post">
 
-			<div class="news-image-container">
-				<a ng-href="{{article.link}}">
-					<img class="news-image" ng-class="{'news-image-link' : article.link}" ng-src="{{article.imageurl}}">
-				</a>
-			</div>
-
 			<div class="post-container">
 				<span style="margin-left: 15px" data-ng-show="adminMode">
 					<a title="Edit" class="admin-control" href="/#!/articles/{{article._id}}/edit">
@@ -69,7 +63,7 @@
 
 				<div data-ng-bind="article.title" class="post-title"></div>
 
-				<div class="post" ng-class="{'dev-mode':devMode}">
+				<div>
 					<span ng-show="!showFull"><span class="post-preview" ng-class="{'dev-mode':devMode}" data-ng-bind="article.content.substring(0,850)"></span><span ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [...]</span></span>
 					<span ng-show="showFull"><span class="post-full" ng-class="{'dev-mode':devMode}" data-ng-bind="article.content"></span><span ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [<<<]</span></span>
 				</div>
