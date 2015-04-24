@@ -49,10 +49,6 @@
 	border-radius: 24px;
 }
 
-.logo {
-	width:200px;
-	height: 200px;
-}
 
 .banner-text {
 	text-align: center;
@@ -61,6 +57,50 @@
 h1{
 	font-size: 7em;
 	font-weight: 800;
+}
+
+.center-nav {
+	width:40em;
+	margin:auto;
+}
+
+@media (max-width: 800px) {
+  h1 {
+		font-size: 4em;
+  }
+
+	.banner {
+		padding: 1em;
+	}
+
+	.center-nav {
+		width:21em;
+	}
+
+}
+
+.logo {
+	width: 200px;
+	height: 200px;
+}
+
+@media (max-width: 400px) {
+	.logo {
+		width: 100px;
+		height: 100px;
+	}
+
+	  h1 {
+			font-size: 2em;
+	  }
+
+		h4{
+			font-size: 1em
+		}
+
+		.banner {
+			padding: 0;
+		}
 }
 
 .nav{
