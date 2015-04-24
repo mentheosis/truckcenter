@@ -320,6 +320,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'modules/core/views/about.client.view.html'
 		});
 
+		$stateProvider.
+		state('24hour', {
+			url: '/24hour',
+			templateUrl: 'modules/core/views/24hour.client.view.html'
+		});
+
 	}
 ]);
 
