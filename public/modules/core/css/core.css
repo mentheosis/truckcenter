@@ -1,6 +1,8 @@
 .header {
   height:280px;
   background: url('/modules/core/img/hero-trucks.jpg');
+  background-repeat: no-repeat;
+  background-position: center; 
   margin-bottom: 3em;
 }
 

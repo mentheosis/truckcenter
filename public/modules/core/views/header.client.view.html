@@ -17,6 +17,9 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+
+      <span class="navbar-brand hidden-xs"><img class="tiny-logo" src="/modules/core/img/logo.png"></span>
+
       <!--
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -25,12 +28,39 @@
         <span class="icon-bar"></span>
       </button>
       -->
-      <span class="navbar-brand"><img class="tiny-logo" src="/modules/core/img/logo.png"></span>
+      <ul class="nav navbar-nav navbar-right visible-xs">
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+
+              <li ui-route="/" ng-class="{active: $uiRoute}"><a href="/#!/">Home</a></li>
+              <li ui-route="/about" ng-class="{active: $uiRoute}"><a href="/#!/about">About</a></li>
+              <li ui-route="/24hour" ng-class="{active: $uiRoute}"><a href="/#!/24hour">24 Hour Help</a></li>
+              <li ui-route="/msgboard" ng-class="{active: $uiRoute}"><a href="/#!/msgboard">Message Board</a></li>
+
+              <li class="divider"></li>
+
+              <li ng-hide="authentication.user" ui-route="/signup" ng-class="{active: $uiRoute}"><a href="/#!/signup">Sign Up</a></li>
+              <li ng-hide="authentication.user" ui-route="/signin" ng-class="{active: $uiRoute}"><a href="/#!/signin">Sign In</a></li>
+
+              <li ng-show="authentication.user.roles.indexOf('admin') != -1">
+                <a href="" ng-click="switchAdminMode()">Enable Admin Mode</a>
+              </li>
+              <li class="divider" ng-show="authentication.user.roles.indexOf('admin') != -1"></li>
+
+              <li ng-show="authentication.user"><a href="/#!/settings/profile">Edit Profile</a></li>
+              <li ng-show="authentication.user && authentication.user.provider === 'local'"><a href="/#!/settings/password">Change Password</a></li>
+              <li ng-show="authentication.user" class="divider"></li>
+              <li ng-show="authentication.user"><a href="/auth/signout">Signout</a></li>
+            </ul>
+        </li>
+      </ul>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav hidden-xs">
 
 
         <li ui-route="/" ng-class="{active: $uiRoute}"><a href="/#!/">Home</a></li>
@@ -40,7 +70,7 @@
 
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right hidden-xs">
 
         <li ng-hide="authentication.user" ui-route="/signup" ng-class="{active: $uiRoute}"><a href="/#!/signup">Sign Up</a></li>
         <li ng-hide="authentication.user" ui-route="/signin" ng-class="{active: $uiRoute}"><a href="/#!/signin">Sign In</a></li>
