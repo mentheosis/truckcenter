@@ -13,10 +13,12 @@ a:hover, a:visited, a:link, a:active {
   z-index: 3;
 }
 
+.admin-control {
+  cursor:pointer;
+}
+
 .news-post {
   position:relative;
-  border: 1px solid #777777;
-  border-radius: 5px;
   background: transparent;
   margin: 5px 5px 15px 5px;
   padding: 15px;
@@ -29,7 +31,6 @@ a:hover, a:visited, a:link, a:active {
   width: 440px;
   height: 225px;
   background:transparent;
-  color: white;
   border: none;
 }
 
@@ -37,7 +38,6 @@ a:hover, a:visited, a:link, a:active {
   width:100%;
   height:100%;
   background:transparent;
-  color: white;
   border: none;
 }
 
@@ -175,18 +175,18 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .post-title {
-  display:inline-block;
+  display: block;
   font-size:1.4em;
   font-weight:900;
   color: #999999;
   border:solid;
   border-width: 0 0 1px 0;
   border-color: #555555;
-  width:100%;
+  margin-bottom: 1em;
 }
 
 input.post-title {
-  background:none;
+  margin: 0 1em;
 }
 
 textarea.post-full {
@@ -272,7 +272,7 @@ textarea.post-full {
   font-size:10px;
   text-indent: 5px;
   text-align: center;
-  padding: 0, 0, 5px, 10px;
+  padding: 0 0 5px 10px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;

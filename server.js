@@ -33,4 +33,4 @@ var server = app.listen(config.port);
 exports = module.exports = app;
 
 // Logging initialization
-console.log('EK League server started on port ' + config.port);
+console.log('Truck Center server started on port ' + config.port);

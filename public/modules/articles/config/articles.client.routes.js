@@ -9,6 +9,18 @@ angular.module('articles').config(['$stateProvider',
 			url: '/articles',
 			templateUrl: 'modules/articles/views/list-articles.client.view.html'
 		}).
+		state('cars', {
+			url: '/cars',
+			templateUrl: 'modules/articles/views/list-articles.client.view.html'
+		}).
+		state('trucks', {
+			url: '/trucks',
+			templateUrl: 'modules/articles/views/list-articles.client.view.html'
+		}).
+		state('specials', {
+			url: '/specials',
+			templateUrl: 'modules/articles/views/list-articles.client.view.html'
+		}).
 		state('msgboard', {
 			url: '/msgboard',
 			templateUrl: 'modules/articles/views/msgboard.client.view.html'

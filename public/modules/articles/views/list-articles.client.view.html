@@ -1,4 +1,4 @@
-<section style="position: relative; background:white" data-ng-controller="ArticlesController" data-ng-init="find()">
+<section style="position: relative" data-ng-controller="ArticlesController" data-ng-init="find()">
 
 	<span class='admin-controls'  style="margin: 5px 20px 0 0" data-ng-show="adminMode">
 		<a href="" title="Create a news post" class='admin-control' ng-click="switchCreateVisible()">
@@ -15,7 +15,7 @@
 				<fieldset>
 
 					<input name="title" type="text" data-ng-model="title" id="title" class="post-title" placeholder="Choose a title" required>
-					<input name="link" type="text" data-ng-model="link" id="link" class="post-title" placeholder="Link?" required>
+					<!--<input name="link" type="text" data-ng-model="link" id="link" class="post-title" placeholder="Link?" required>-->
 					<div class="image-entry-container">
 						<textarea placeholder="Image URL Here" name="imageurl" data-ng-model="imageurl" id="imageurl" class="image-entry"></textarea>
 					</div>
@@ -33,41 +33,79 @@
 		</div>
 	</div>
 
-	<div data-ng-repeat="article in articles" class="news-post">
+	<div data-ng-repeat="article in articles" class="row news-post">
 
-			<div>
-				<span style="margin-left: 15px" data-ng-show="adminMode">
-					<a title="Edit" class="admin-control" href="/#!/articles/{{article._id}}/edit">
-						<i class="glyphicon glyphicon-edit"></i>
-					</a>
-					<a title="Delete" ng-click="confirmDelete = true" class="admin-control" href="" style="cursor:pointer" >
-						<i class="glyphicon glyphicon-trash"></i>
-					</a>
-						<div style="position: relative" ng-show="confirmDelete">
-								<div class="confirmDelete">
-								    <div>
-								      <a href ng-click="confirmDelete = false" title="Close" class="confirmDelete-close">X</a>
 
-								      <h3>Confirm Delete</h3>
-								      <br>
-								      <span ng-click="remove(article)" class="delete-button">
-								        Delete
-								      </span>
-								      <span ng-click="confirmDelete = false" class="delete-button">
-								        Cancel
-								      </span>
-								    </div>
-								</div>
+		<div data-ng-show="adminMode">
+			<a title="Edit" class="admin-control" ng-click="article.editing = !article.editing">
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+			<a title="Delete" ng-click="confirmDelete = true" class="admin-control" href="" style="cursor:pointer" >
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+				<div style="position: relative" ng-show="confirmDelete">
+						<div class="confirmDelete">
+							<div>
+								<a href ng-click="confirmDelete = false" title="Close" class="confirmDelete-close">X</a>
+
+								<h3>Confirm Delete</h3>
+								<br>
+								<span ng-click="remove(article)" class="delete-button">
+									Delete
+								</span>
+								<span ng-click="confirmDelete = false" class="delete-button">
+									Cancel
+								</span>
+							</div>
 						</div>
-				</span>
+				</div>
+		</div>
 
+		<span ng-hide="article.editing">
+			<div class="row">
 				<div data-ng-bind="article.title" class="post-title"></div>
+			</div>
 
-				<div>
-					<span ng-show="!showFull"><span class="post-preview" ng-class="{'dev-mode':devMode}" data-ng-bind="article.content.substring(0,850)"></span><span ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [...]</span></span>
-					<span ng-show="showFull"><span class="post-full" ng-class="{'dev-mode':devMode}" data-ng-bind="article.content"></span><span ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [<<<]</span></span>
+			<div class="row">
+				<div class="col-sm-6" ng-show="article.imageurl">
+					<img class="img-responsive" ng-src="{{article.imageurl}}">
+				</div>
+				<div ng-class="{ 'col-sm-6': article.imageurl, 'col-sm-12': !article.imageurl }">
+					<span ng-show="!showFull"><span class="post-full" data-ng-bind="article.content.substring(0,850)"></span><a ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [click to read more]</a></span>
+					<span ng-show="showFull"><span class="post-full" data-ng-bind="article.content"></span><a ng-show="article.content.length > 850" ng-click="switchShowFull(this)" style="cursor:pointer" > [click to shrink]</a></span>
 				</div>
 			</div>
+		</span>
+
+
+		<span ng-show="article.editing">
+			<!--
+			<div class="news-image-container">
+				<div class="news-image"></div>
+			</div>
+			<div class="post-container" style="display:inline-block">
+			-->
+
+			<form name="updateForm" data-ng-submit="update(article)" novalidate>
+				<fieldset>
+
+					<input name="title" type="text" data-ng-model="article.title" id="title" class="post-title" placeholder="Choose a title" required>
+					<!--<input name="link" type="text" data-ng-model="article.link" id="link" class="post-title" placeholder="Link?" required>-->
+					<input name="image" type="text" placeholder="Image URL Here" data-ng-model="article.imageurl" class="post-title" id="imageurl" class="image-entry">
+
+					<div class="post" style="width:100%; height: 200px" ng-class="{'dev-mode':devMode}">
+							<textarea placeholder="Type here!" name="content" data-ng-model="article.content" id="content" class="post-full"></textarea>
+					</div>
+					<input type="submit" style="display:block; color:black" value="Save" class="myButton post">
+					<span data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+					</span>
+
+				</fieldset>
+			</form>
+		</span>
+
+
 	</div>
 
 </section>

@@ -4,6 +4,14 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$rootSco
 	function($scope, $rootScope, $stateParams, $location, $animate, $timeout, Authentication, Articles, Comments) {
 		$scope.authentication = Authentication;
 
+		$scope.currentLoc = $location.path().substr(1,$location.path().length)
+		if ($scope.currentLoc.indexOf('/') != -1) {
+			$scope.currentLoc = $scope.currentLoc.substr(0,$scope.currentLoc.indexOf('/'));
+		}
+		if ($scope.currentLoc.length == 0) {
+			$scope.currentLoc = 'home'
+		}
+
 		$scope.switchShowFull = function(repeatScope){
 			repeatScope.showFull = !repeatScope.showFull;
 		};
@@ -24,7 +32,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$rootSco
 				link: this.link
 			});
 
-			article.parent = parentString; //by default the articles list only shows where parent = 'top'
+			article.parent = 	$scope.currentLoc //parentString; //by default the articles list only shows where parent = 'top'
 			article.user = this.user;
 			article.imageurl = this.imageurl;
 
@@ -80,11 +88,11 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$rootSco
 			}
 		};
 
-		$scope.update = function() {
-			var article = $scope.article;
+		$scope.update = function(a) {
+			var article = a;
 
 			article.$update(function() {
-				$location.path('articles/' + article._id);
+				a.editing = false;
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -127,9 +135,9 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$rootSco
 			})
 		}
 */
+
 		$scope.find = function() {
-			//$scope.articles = Articles.query();
-			$scope.articles = Articles.list({parent:'top', limit:4, sortBy:($scope.sortDesc?'-':'') + $scope.sortBy});
+			$scope.articles = Articles.list({parent:	$scope.currentLoc, limit:4, sortBy:($scope.sortDesc?'-':'') + $scope.sortBy});
 		};
 
 		$scope.listMsgs = function() {

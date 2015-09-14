@@ -1,28 +1,28 @@
 <section class="news-post" data-ng-controller="ArticlesController" data-ng-init="findOne()">
-		<form name="articleForm" class="form-horizontal" style="padding:15px" data-ng-submit="update(articleForm.$valid)" novalidate>
+
+		<div class="news-image-container">
+			<div class="news-image"></div>
+		</div>
+		<div class="post-container" style="display:inline-block">
+
+		<form name="articleForm" data-ng-submit="update(articleForm.$valid)" novalidate>
 			<fieldset>
 
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid}">
-						<input name="title" type="text" data-ng-model="article.title" id="title" class="post-title edit-article-form" placeholder="Title" required>
-						<input ng-show="article.parent === 'top'" name="image" type="text" data-ng-model="article.imageurl" id="imageurl" class="post-title edit-article-form" placeholder="Image URL" required>
+				<input name="title" type="text" data-ng-model="article.title" id="title" class="post-title" placeholder="Choose a title" required>
+				<input name="link" type="text" data-ng-model="article.link" id="link" class="post-title" placeholder="Link?" required>
+				<div class="image-entry-container">
+					<textarea placeholder="Image URL Here" name="imageurl" data-ng-model="article.imageurl" id="imageurl" class="image-entry"></textarea>
 				</div>
 
-
-				<div class="form-group">
-					<textarea name="content" data-ng-model="article.content" id="content" class="post-full edit-article-form" style="color:#FF7000" cols="30" rows="10" placeholder="Content" required></textarea>
-					<div ng-show="submitted && articleForm.content.$invalid" class="help-block">
-						<p ng-show="articleForm.content.$error.required" class="text-danger">Content is required</p>
-					</div>
+				<div class="post" style="width:100%; height: 200px" ng-class="{'dev-mode':devMode}">
+						<textarea placeholder="Type here!" name="content" data-ng-model="article.content" id="content" class="post-full"></textarea>
 				</div>
-
-				<div class="form-group">
-					<input type="submit" value="Save" style="font-size: 1.2em" class="msg-button">
-				</div>
-
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+				<input type="submit" style="display:block; color:black" value="Save" class="myButton post">
+				<span data-ng-show="error" class="text-danger">
+				<strong data-ng-bind="error"></strong>
+				</span>
 
 			</fieldset>
 		</form>
+
 </section>
