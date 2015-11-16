@@ -30,7 +30,7 @@ label {
 .news-post {
   position:relative;
   background: transparent;
-  margin: 5px 5px 15px 5px;
+  margin: 5px 5px 2em 5px;
   padding: 15px;
 }
 
@@ -193,6 +193,7 @@ label {
   border-width: 0 0 1px 0;
   border-color: #555555;
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .post-title-edit {

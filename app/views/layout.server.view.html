@@ -43,17 +43,18 @@
 
 </head>
 
-<body ng-controller='HomeController' style="background: white; padding: none; margin: none" class="ng-cloak">
+<body ng-controller='HomeController' class="ng-cloak">
 
 	<section>
-		<div class="container-fluid">
+		<div class="container">
 			<section data-ng-include="'/modules/core/views/header.client.view.html'"></section>
 		</div>
 	</section>
 
 	<section>
-		<div class="container">
+		<div class="container body-container">
 			<div class="main-body">
+				<br>
 				{% block content %}{% endblock %}
 			</div>
 		</div>
